@@ -12,7 +12,9 @@
   "devDependencies": {
     "@commitlint/cli": "^17.8.0",
     "@commitlint/config-conventional": "^17.8.0",
-    "commitizen": "^4.3.0"
+    "commitizen": "^4.3.0",
+    "i18next-hmr": "^3.0.3",
+    "i18next-http-backend": "^2.2.2"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
@@ -33,6 +35,7 @@
     "next": "13.5.4",
     "next-auth": "^4.23.2",
     "next-i18next": "^14.0.3",
+    "null-loader": "^4.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.47.0",
