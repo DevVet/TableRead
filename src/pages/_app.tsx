@@ -4,7 +4,6 @@ import { MantineProvider } from "@mantine/core";
 import { appWithTranslation } from "next-i18next";
 import type { AppProps } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
-import nextI18NextConfig from "../../next-i18next.config";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const queryClient = new QueryClient();
@@ -17,4 +16,4 @@ const App = ({ Component, pageProps }: AppProps) => {
   );
 };
 
-export default appWithTranslation(App, nextI18NextConfig);
+export default appWithTranslation(App);
