@@ -10,7 +10,7 @@ describe("Home", () => {
     const { getByRole } = render(<Home />);
 
     const heading = getByRole("heading", {
-      name: /welcome to next\.js!/i,
+      name: /testKey/i,
     });
 
     expect(heading).toBeDefined();
