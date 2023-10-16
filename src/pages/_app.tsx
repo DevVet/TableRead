@@ -3,13 +3,17 @@ import theme from "@/theme";
 import { MantineProvider } from "@mantine/core";
 import { appWithTranslation, withTranslation } from "next-i18next";
 import type { AppProps } from "next/app";
+import { QueryClient, QueryClientProvider } from "react-query";
 import nextI18NextConfig from "../../next-i18next.config";
 
 const App = ({ Component, pageProps }: AppProps) => {
+  const queryClient = new QueryClient();
   return (
-    <MantineProvider theme={theme}>
-      <Component {...pageProps} />
-    </MantineProvider>
+    <QueryClientProvider client={queryClient}>
+      <MantineProvider theme={theme}>
+        <Component {...pageProps} />
+      </MantineProvider>
+    </QueryClientProvider>
   );
 };
 
