@@ -1,32 +1,37 @@
 "use client";
 
-import { useScopedI18n } from "@/utils/i18n/client";
+import { apiHello } from "@/utils/api/services";
 import { useQuery } from "@tanstack/react-query";
 import { FC } from "react";
+import { useTranslation } from "../i18n/client";
 
 interface Props {
   nameFromSSR: string;
 }
 
-export const LandingPage: FC<Props> = ({ nameFromSSR }) => {
+const LandingPage: FC<Props> = ({ nameFromSSR }) => {
+  const { t } = useTranslation("ComponentLandingPage");
+
   // This fetch occurs on the client and uses the server data as initial data
   const { data } = useQuery({
     queryKey: ["ben", "winchester"],
     queryFn: async ({ queryKey: [first, last] }) => {
-      const res = await fetch("/api/hello", {
+      const { data } = await apiHello<{ name: string }>({
         method: "POST",
-        body: JSON.stringify({ first, last }),
+        payload: { first, last },
       });
-      return (await res.json()).name;
+      return data.name;
     },
     initialData: nameFromSSR,
   });
 
-  const t = useScopedI18n("hello");
   return (
     <div>
       <h1>{nameFromSSR}</h1>
-      <h2>{data || t("world")}</h2>
+      <h2>{t("common:title") + t("description") + t("content")}</h2>
+      {data && <p>{data}</p>}
     </div>
   );
 };
+
+export default LandingPage;
