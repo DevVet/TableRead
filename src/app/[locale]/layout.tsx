@@ -2,8 +2,8 @@ import GlobalContextProvider from "@/contexts/GlobalContextProvider";
 import { ColorSchemeScript } from "@mantine/core";
 import { dir } from "i18next";
 import { Metadata, ResolvingMetadata } from "next";
-import { useTranslation } from "../i18n";
-import { supportedLocales } from "../i18n/settings";
+import { useTranslation } from "../../i18n";
+import { supportedLocales } from "../../i18n/settings";
 
 interface Props {
   params: { locale: string };

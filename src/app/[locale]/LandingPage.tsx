@@ -3,7 +3,7 @@
 import { apiHello } from "@/utils/api/services";
 import { useQuery } from "@tanstack/react-query";
 import { FC } from "react";
-import { useTranslation } from "../i18n/client";
+import { useTranslation } from "../../i18n/client";
 
 interface Props {
   nameFromSSR: string;
