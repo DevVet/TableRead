@@ -1,10 +1,6 @@
 import acceptLanguage from "accept-language";
 import { NextMiddleware, NextResponse } from "next/server";
-import {
-  cookieName,
-  defaultLocale,
-  supportedLocales,
-} from "./app/i18n/settings";
+import { cookieName, defaultLocale, supportedLocales } from "./i18n/settings";
 
 acceptLanguage.languages(supportedLocales);
 

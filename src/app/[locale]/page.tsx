@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { apiHello } from "@/utils/api/services";
 import { Metadata, NextPage } from "next";
-import { useTranslation } from "../i18n";
+import { useTranslation } from "../../i18n";
 import LandingPage from "./LandingPage";
 
 interface Props {
