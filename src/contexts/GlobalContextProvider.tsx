@@ -5,6 +5,7 @@ import theme from "@/theme";
 import { MantineProvider } from "@mantine/core";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { SessionProvider } from "next-auth/react";
 import React, { useRef } from "react";
 
 const GlobalContextProvider = ({
@@ -18,10 +19,12 @@ const GlobalContextProvider = ({
   return (
     <MantineProvider theme={theme}>
       <QueryClientProvider client={client}>
-        {children}
-        {process.env.NODE_ENV !== "production" && (
-          <ReactQueryDevtools initialIsOpen={false} />
-        )}
+        <SessionProvider>
+          {children}
+          {process.env.NODE_ENV !== "production" && (
+            <ReactQueryDevtools initialIsOpen={false} />
+          )}
+        </SessionProvider>
       </QueryClientProvider>
     </MantineProvider>
   );

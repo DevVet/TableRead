@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import { auth } from "@/auth";
 import { apiHello } from "@/utils/api/services";
 import { Metadata, NextPage } from "next";
 import { useTranslation } from "../../i18n";
@@ -20,10 +21,12 @@ const IndexPage: NextPage<Props> = async ({ params: { locale } }) => {
 
   // This is fetched on the server and passes the data to the client component
   const { data } = await apiHello<{ name: string }>({});
+  const session = await auth();
+
   return (
     <>
       <h1>{t("hello")}</h1>
-      <LandingPage nameFromSSR={data.name} />
+      <LandingPage nameFromSSR={session?.user?.name || data.name} />
     </>
   );
 };
